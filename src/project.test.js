@@ -9,16 +9,13 @@ describe(`Project class object`, () => {
     
     const testProject = new Project("Project Name", "Project I plan to complete", "incomplete", [firstTask, secondTask, thirdTask])
 
+
     // testing constructor
     test(`Title should be "Project Name"`, () => {
         expect(testProject.title).toMatch("Project Name")
     })
 
-    test(`First task in tasklist should be named "First Task"`, () => {
-        expect(testProject.taskList[0].title).toMatch("First Task")
-    })
-
-    // testing methods
+    // testing toggle method
     test(`Status should be "complete"`, () => {
         expect(testProject.toggleComplete()).toMatch("complete")
     })
@@ -31,6 +28,25 @@ describe(`Project class object`, () => {
 
         test(`Previously complete tasks should stay "complete"`, () => {
             expect(testProject.taskList[0].status).toMatch("complete")
+        })
+    })
+
+
+    // testing taskList functions
+    describe('Removing a task from the taskList', () => {
+        testProject.removeTask(firstTask)
+        test(`Get instance variables from taskList`, () => {
+            expect(testProject.taskList[0]).toBe(secondTask)
+        })
+        test(`Get instance variables from taskList`, () => {
+            expect(testProject.taskList[0].title).toMatch("Second Task")
+        })
+    })
+
+    describe('Adding a new task to the taskList', () => {
+        testProject.addTask(fourthTask)
+        test(`Get instance variables from taskList`, () => {
+            expect(testProject.taskList[2].title).toMatch("Fourth Task")
         })
     })
 })

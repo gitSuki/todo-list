@@ -26,7 +26,10 @@ export default class Project {
     }
 
     addTask(task){
-        taskList.push(task)
-        return task
+        this.taskList.push(task)
+    }
+
+    removeTask(delTask){
+        this.taskList = this.taskList.filter(taskElement => taskElement != delTask)
     }
 }
