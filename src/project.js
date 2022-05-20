@@ -17,7 +17,12 @@ export default class Project {
     }
 
     toggleComplete(){
-        return (this.status = "incomplete") ? this.status = "complete" : this.status = "incomplete"
+        let newStatus = (this.status = "incomplete") ? "complete" : "incomplete"
+        
+        // sets every task within the array to be either complete or incomplete based on the status the project will turn into
+        this.taskList.map(task => task.status = newStatus)
+
+        return this.status = newStatus
     }
 
     addTask(task){

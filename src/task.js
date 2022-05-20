@@ -7,6 +7,11 @@ export default class Task extends Project {
         this.importance = importance
     }
 
+    toggleComplete(){
+        // overriding superclass method
+        return (this.status = "incomplete") ? this.status = "complete" : this.status = "incomplete"
+    }
+
     togglePriority(){
         // should only ever be 'urgent' or 'not urgent'
         return (this.prioirty = "urgent") ? this.status = "not urgent" : this.status = "urgent"
