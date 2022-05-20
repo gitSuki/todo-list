@@ -1,8 +1,9 @@
 import Task from './task';
 
 describe(`Task class object`, () => {
-    const testTask = new Task("Task Name", "Task I plan to do", "Urgent")
+    const testTask = new Task("Task Name", "Task I plan to do", "incomplete", "urgent", "important")
     
+    // testing constructor variables
     test(`Title should be "Task Name"`, () => {
         expect(testTask.title).toMatch("Task Name")
     })
@@ -11,10 +12,19 @@ describe(`Task class object`, () => {
         expect(testTask.title).toMatch("Task Name")
     })
 
-    test(`Description should be "Urgent"`, () => {
-        expect(testTask.priority).toMatch("Urgent")
+    test(`Status should be "incomplete"`, () => {
+        expect(testTask.status).toMatch("incomplete")
     })
 
+    test(`Priority should be "urgent"`, () => {
+        expect(testTask.priority).toMatch("urgent")
+    })
+
+    test(`Importance should be "important"`, () => {
+        expect(testTask.importance).toMatch("important")
+    })
+
+    // testing methods
     test(`Title should be changes to "Testing"`, () => {
         expect(testTask.changeTitle("Testing")).toMatch("Testing")
     })
@@ -23,7 +33,15 @@ describe(`Task class object`, () => {
         expect(testTask.changeDescription("Testing")).toMatch("Testing")
     })
 
-    test(`Priority should be changes to "Low"`, () => {
-        expect(testTask.changePriority("Low")).toMatch("Low")
+    test(`Status should be "complete"`, () => {
+        expect(testTask.toggleComplete()).toMatch("complete")
+    })
+
+    test(`Priority should be changed to "not urgent"`, () => {
+        expect(testTask.togglePriority()).toMatch("not urgent")
+    })
+
+    test(`Importance should be changed to "not important"`, () => {
+        expect(testTask.toggleImportance()).toMatch("not important")
     })
 })
